@@ -42,7 +42,7 @@ const Auth = () => {
         if (NewPassword.length > 4) {
             if (NewPassword === form.confirmPassword) {
                 try{
-                    await axios.post('https://pager2022.herokuapp.com/auth/UpdatePassword', { NewPassword, checkEmail })
+                    await axios.post('https://pager2022.onrender.com/auth/UpdatePassword', { NewPassword, checkEmail })
                       .then(res=>{
                           console.log(res.data)
                             if(res.data.message === 'Password updated') {
@@ -79,7 +79,7 @@ const Auth = () => {
         e.preventDefault();
         const { checkEmail, username } = form;
         console.log(checkEmail, username);
-        const URL = 'https://pager2022.herokuapp.com/auth/forgot';
+        const URL = 'https://pager2022.onrender.com/auth/forgot';
         try {
             const { SentOtp } = await axios.post(URL, { checkEmail, username }, { timeout: 120 * 1000 })
                 .then(res => {
@@ -108,7 +108,7 @@ const Auth = () => {
     const verify = async (e) => {
         e.preventDefault();
         const { checkOtp, SentOtp } = form;
-        const URL = 'https://pager2022.herokuapp.com/auth/verify';
+        const URL = 'https://pager2022.onrender.com/auth/verify';
         const { data } = await axios.post(URL, { checkOtp, SentOtp }, { timeout: 120 * 1000 })
         if (data.message === 'OTP verified') {
             alert(data.message)
@@ -128,7 +128,7 @@ const Auth = () => {
 
         const { username, password, email, avatarURL } = form;
 
-        const URL = 'https://pager2022.herokuapp.com/auth';
+        const URL = 'https://pager2022.onrender.com/auth';
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName: form.fullName, email, avatarURL,
         })
