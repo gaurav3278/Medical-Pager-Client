@@ -16,7 +16,7 @@ const TeamChannelPreview = ({ setActiveChannel, setIsCreating, setIsEditing, set
     //*preview for direct messages
     const DirectPreview = () => {
         //will give us values of all the items in that specific members object & we filter it
-        const members = Object.values(channel.state.members).filter(({ user }) => user.id != client.userID)
+        const members = Object.values(channel.state.members).filter(({ user }) => user.id !== client.userID)
         return (
             <div className='channel-preview__item single'>
                 <Avatar
